@@ -117,7 +117,7 @@ Marque com `[✅]` os elementos que **foram implementados no seu site**. Você n
 - [✅] Manipulação do DOM
 - [✅] Eventos (`click`, `submit`, etc.)
 - [ ] Validação de formulário
-- [ ] Alteração dinâmica de conteúdo
+- [✅] Alteração dinâmica de conteúdo
 - [✅] Uso de funções
 - [✅] Uso de arrays ou objetos
 - [ ] Uso de `fetch` ou API externa
