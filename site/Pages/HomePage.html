@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azzy Store</title>
-    <link rel="icon" href="/images/icone.png" type="image/png">
+    <link rel="icon" href="../images/icone.png" type="image/png">
 
     <style>
         *, *::before, *::after {
@@ -79,7 +79,6 @@
             align-items: center;
             gap: 14px;
         }
-
 
         .github-small-box {
             position: fixed;
@@ -316,7 +315,6 @@
             z-index: 999;
         }
 
-
         .title-section {
             text-align: center;
             margin: 5px 0 10px;
@@ -495,6 +493,7 @@
             align-items: center;
         }
 
+        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -620,6 +619,94 @@
                 height: 45%;
             }
         }
+
+        /* ==================== COOKIE CONSENT - JANELINHA ==================== */
+        #cookieConsent {
+            position: fixed;
+            bottom: 30px;           /* Distância da parte de baixo da tela */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            max-width: 420px;
+            width: 90%;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            padding: 24px;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            border: 3px solid #e63946;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        #cookieConsent.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cookie-row {
+            display: flex;
+            align-items: flex-end;   /* Alinha a imagem na base */
+            gap: 18px;
+        }
+
+        .cookie-icon {
+            flex-shrink: 0;
+        }
+
+        .cookie-icon img {
+            width: 120px;     /* ← Aumente ou diminua este valor */
+            height: 120px;
+            object-fit: contain;
+        }
+
+        .cookie-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .cookie-content strong {
+            color: #e63946;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .cookie-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .cookie-btn.close {
+            background: #f0f0f0;
+            color: #444;
+            border: 2px solid #ddd;
+        }
+
+        .cookie-btn.close:hover {
+            background: #e0e0e0;
+        }
+
+        .cookie-btn.allow {
+            background: #e63946;
+            color: white;
+            border: none;
+        }
+
+        .cookie-btn.allow:hover {
+            background: #d62839;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -679,7 +766,7 @@
 </div>
 
 <div class="github-small-box" id="githubBox">
-    <img src="/images/Carrocel/azzygit.png" alt="GitHub">
+    <img src="../images/Carrocel/azzygit.png" alt="GitHub">
     <div>
         <span class="version-text">GITHUB versão! Em breve</span>
         <br>
@@ -740,6 +827,7 @@
     </div>
 </div>
 
+<!-- ==================== COOKIE CONSENT BANNER ==================== -->
 <div id="cookieConsent">
     <div class="cookie-row">
         <div class="cookie-icon">
@@ -755,7 +843,7 @@
     </div>
 </div>
 
-
+<!-- ==================== NOVIDADES ==================== -->
 <div class="novidades-section">
     <h1 style="text-align: center; font-family: 'Comic Neue', cursive; font-size: 4.2rem; color: #e63946; -webkit-text-stroke: 2px #1a1a1a; margin-bottom: 30px;">
         !NOVIDADES!
@@ -808,8 +896,9 @@
     </div>
 </div>
 
-<script src="/js/products.js"></script>
+<script src="../js/products.js"></script>
 <script>
+    // ==================== BUSCA NA NAVBAR ====================
     const navbarSearch = document.getElementById('navbarSearch');
     const searchDropdown = document.getElementById('searchDropdown');
 
@@ -861,6 +950,7 @@
         }
     });
 
+    // ==================== CARRINHO ====================
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function updateCartCount() {
@@ -932,6 +1022,7 @@
         document.getElementById('productModal').style.display = 'none';
     }
 
+    // ==================== NAVBAR SCRIPTS ====================
     const wrapper = document.getElementById('categoriesWrapper');
     const pullBtn = document.getElementById('pullBtn');
     const githubBox = document.getElementById('githubBox');
@@ -966,10 +1057,12 @@
         });
     }
 
+    // ==================== CARRINHO - IR PARA A PÁGINA ====================
     document.getElementById('cartBtn').addEventListener('click', () => {
         window.location.href = 'Carrinho.html';
     });
 
+    // ==================== SUPORTE POPUP ====================
     const supportBtn = document.getElementById('supportBtn');
     const supportPopup = document.getElementById('supportPopup');
     let popupVisible = false;
@@ -991,6 +1084,7 @@
         }
     });
 
+    // ==================== CARROSSEL + SCROLL PARA NOVIDADES ====================
     let currentSlide = 0;
     const items = document.querySelectorAll('.carousel-item');
     const totalSlides = items.length;
@@ -1027,6 +1121,7 @@
     setInterval(nextSlide, 5000);
     showSlide();
 
+    // ==================== ANIMAÇÃO CURIOSIDADE ====================
     const curiosityText = document.getElementById('curiosityText');
     function curiosityAnimation() {
         curiosityText.style.transition = 'transform 0.6s ease, color 0.4s ease';
@@ -1037,6 +1132,7 @@
     setInterval(curiosityAnimation, 4500);
     setTimeout(curiosityAnimation, 1200);
 
+    // ==================== COOKIE CONSENT ====================
     const cookieConsent = document.getElementById('cookieConsent');
     const btnAllow = document.getElementById('btnAllow');
     const btnClose = document.getElementById('btnClose');
@@ -1060,11 +1156,13 @@
         setTimeout(() => cookieConsent.style.display = 'none', 300);
     });
 
+    // Inicialização
     window.onload = () => {
         updateCartCount();
         checkConsent();
     };
 
+    // Fechar modal ao clicar fora
     document.getElementById('productModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
